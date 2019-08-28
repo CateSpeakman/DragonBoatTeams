@@ -1,0 +1,34 @@
+[
+	{
+		"Name": "Community Men Division A",
+		"Code": "CommMA",
+		"Description": "This league consists of community men teams in Division A."
+    },
+	{
+		"Name": "Club Intergender Division B",
+		"Code": "ClubIGB",
+		"Description": "This league consists of amateur intergender teams in Division B."
+	},
+	{
+		"Name": "Community Female Division B",
+		"Code": "CommFB",
+		"Description": "This league consists of community women's teams in Division B."
+	},
+    {
+		"Name": "Club 65+",
+		"Code": "Club65",
+		"Description": "This league consists of amateur teams with players 65 plus."
+	}
+
+	{
+		"Name": "Club Teen",
+		"Code": "ClubTeen",
+		"Description": "This league consists of amateur teams with players age 13 to 19."
+	},
+
+	{
+		"Name": "Club Intergender Division A",
+		"Code": "ClubIGA",
+		"Description": "This league consists of amateur intergender teams in Division A."
+	}
+]
