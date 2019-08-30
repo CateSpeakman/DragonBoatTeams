@@ -37,83 +37,102 @@
                     <a class="nav-link" id="galleryNav" href="gallery.html">Gallery</a>
                 </li>
             </ul>
-            <img class="float-right" style="height:100px" src="/public/images/boat1.jpg" alt="dragon boat">
+            <img class="float-right" id="navpic" src="/public/images/boat1.jpg" alt="dragon boat">
         </div>
     </nav>
  <!--End of Nav Bar -->
  <h1 class="jumbotron text-center" id="banner">Harvey Lake Dragon Boats</h1>
  <main>
-        <h1 class="jumbotron">Duckworth School of Learning</h1>
+        
         <div class="container">
-            <form id="editCourseForm">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="courseid">Course Id</label>
-                        <input type="text" class="form-control" id="courseid" name="courseid" readonly>
-                    </div>
+            <form id="editTeamForm">
+                <div class="form-group col-md-4">
+                    <label for="teamName">Team Name</label>
+                    <input type="text" class="form-control" id="teamName" name="teamname" required>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title">
-                    </div>
+            
+            
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-check-label" for="league">League:</label>
+                    <input type="text" class="form-control" id="league" name="league" readonly>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-check-label" for="category">Course Category:</label>
-                        <input type="text" class="form-control" id="category" name="category" readonly>
-                    </div>
-                </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="location">Location</label>
-                        <input type="text" class="form-control" id="location" name="location">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="managerName">Manager Name</label>
+                    <input type="text" class="form-control" id="managerName" name="managername" required>
                 </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="startDate">Start Date</label>
-                        <input type="text" class="form-control" id="startDate" name="startdate">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="managerPhone">Manager Phone</label>
+                    <input type="text" class="form-control" id="managerPhone" name="managerphone" required>
                 </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="endDate">End Date</label>
-                        <input type="text" class="form-control" id="endDate" name="enddate">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="managerEmail">Manager Email</label>
+                    <input type="text" class="form-control" id="managerEmail" name="manageremail" required>
                 </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="meets">Meets</label>
-                        <input type="text" class="form-control" id="meets" name="meets">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="maxTeamMember">Max # Team Members</label>
+                    <input type="text" class="form-control" id="maxTeamMember" name="maxteammembers" required>
                 </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="fee">Fee</label>
-                        <input type="text" class="form-control" id="fee" name="fee">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="minMemberAge">Minimum Member Age</label>
+                    <input type="text" class="form-control" id="minMemberAge" name="minmemberage" required>
                 </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="maxMemberAge">Maximum Member Age</label>
+                    <input type="text" class="form-control" id="maxMemberAge" name="maxmemberage" required>
+                </div>
+            </div>
+
+            <div class="form-check form-check-inline">
+
+                <input class="form-check-input" type="radio" name="teamgender" id="male" value="male" checked>
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="teamgender" id="female"
+                    value="female">
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="teamgender" id="all"
+                    value="all">
+                <label class="form-check-label" for="all">All</label>
+            </div>
+        </form>
                 <div class="container">
                     <div class="row">
                         <button type="button" id="editBtn" class="btn btn-primary">Edit</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            
+       
         <div class="container">
             <div id="msgDiv">
                 <ul id="errorMessages"></ul>
             </div>
         </div>
-
-
+    </div>
 
 </main>
 
@@ -126,7 +145,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-<script src="script/index.js"></script>
+<script src="script/editTeam.js"></script>
 </body>
 
 </html>
