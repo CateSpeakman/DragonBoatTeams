@@ -1,6 +1,6 @@
 "use strict";
-//Description: This script will dynamically populate the page with all course information based on user
-//selection of a table that generated on a previous page.  This information will be pulled from a restful API server. 
+//Description: This script will add a member to team  based on team being viewed by user on the previous page.
+//This information will be posted from a restful API server. 
 //Author:Cate Speakman
 
 
@@ -9,11 +9,11 @@
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
-    let id = urlParams.get("courseid");
+    let id = urlParams.get("teamId");
 
-    $("#courseid").val(id);
+    $("#teamId").val(id);
 
-    //this posts the new student information to the server
+    //this posts the new team member information to the server
     $("#saveBtn").on("click", function () {
 
 
@@ -24,8 +24,8 @@ $(function () {
             return;
         }
        
-        $.post("/api/register", $("#registerForm").serialize(), function (data) {
-            window.location.href = "details.html?courseid=" + id;
+        $.post("/api/teams/teamid/members", $("#registerForm").serialize(), function (data) {
+            window.location.href = "teamDetails.html?teamid=" + id;
             alert("register successful");
         });
 
@@ -41,6 +41,39 @@ function formValidation() {
     let email = $("#email").val();
     let errMsg = [];
 
-    if ($("#studentname").val().trim() == "") {
-        errMsg[errMsg.length] = "Student Name is required";
-    }//ends if statement for studentname validation
+    if ($("#memberName").val().trim() == "") {
+        errMsg[errMsg.length] = "Member Name is required";
+    }//ends if statement for membername validation
+
+    if ($("#contactName").val().trim() == "") {
+        errMsg[errMsg.length] = "Contact Name is required";
+    }//ends if statement for contactname validation
+
+
+    if (emailPattern.test(email) == false) {
+        errMsg[errMsg.length] = "Valid email address is required";
+    }//ends if statement for email validation
+
+
+    if ($("#age").val().trim() == "") {
+        errMsg[errMsg.length] = "Age is required";
+    }//ends if statement for age validation
+
+    if ($("#gender").val().trim() == "") {
+        errMsg[errMsg.length] = "Gender is required";
+    }//ends if statement for age validation
+
+    if ($("#phone").val().trim() == "") {
+        errMsg[errMsg.length] = "Phone is required";
+    }//ends if statement for age validation
+
+    if (errMsg.length == 0) {
+        return true;
+    } 
+    else {
+        for (let i = 0; i < errMsg.length; i++) {
+            $("<li>" + errMsg[i] + "</li>").appendTo($("#errorMessages"));
+        }
+        return false;
+    }
+}
