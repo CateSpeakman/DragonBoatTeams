@@ -37,33 +37,52 @@
                     <a class="nav-link" id="galleryNav" href="gallery.html">Gallery</a>
                 </li>
             </ul>
-            <img class="float-right" style="height:100px" src="/public/images/boat1.jpg" alt="dragon boat">
+            <img class="float-right" id="navpic" src="/public/images/boat1.jpg" alt="dragon boat">
         </div>
     </nav>
  <!--End of Nav Bar -->
  <h1 class="jumbotron text-center" id="banner">Harvey Lake Dragon Boats</h1>
  <main>
-        <h1 class="jumbotron">Duckworth School of Learning</h1>
+        
         <section>
-            <!-- this section will allow the user to register for the class they were previously 
+            <!-- this section will allow the user to register for the team they were previously 
             reviewing on the details page-->
             <div class="container">
                 <form id="registerForm" name="registerForm">
                     <div class="form-group row">
-                        <label for="courseid" class="col-sm-2 col-form-label">Course ID</label>
+                        <label for="teamName" class="col-sm-2 col-form-label">Team Name</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="courseid" id="courseid" readonly>
+                            <input type="text" class="form-control" name="teamName" id="teamName" readonly>
                             <br />
                         </div>
+
+                        div class="form-group row">
+                        <label for="league" class="col-sm-2 col-form-label">League</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="league" id="league" readonly>
+                            <br />
+                        </div>
+
                         <div class="container">
                             <div class="form-group row">
-                                <label for="studentname" class="col-sm-2 col-form-label">Student Name</label>
+                                <label for="memberName" class="col-sm-2 col-form-label">Member Name</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="studentname" id="studentname"
-                                        placeholder="Student Name" required>
+                                    <input type="text" class="form-control" name="membername" id="memberName"
+                                        placeholder="Member Name" required>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="contactName" class="col-sm-2 col-form-label">Contact Name</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="contactname" id="contactName"
+                                        placeholder="Contact Name" required>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="container">
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -73,7 +92,40 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="container">
+                            <div class="form-group row">
+                                <label for="age" class="col-sm-2 col-form-label">Age</label>
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" name="age" id="age"
+                                        placeholder="Age" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female"
+                                value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+
+
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                        placeholder="Phone" required>
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="container">
                             <button id="saveBtn" type="button" class="btn btn-info">Register</button>
                         </div>
                          <div class="container" id="msgDiv"> 
@@ -83,7 +135,6 @@
                 </form>
             </div>
         </section>
-
 
 </main>
 
@@ -96,7 +147,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-<script src="script/index.js"></script>
+<script src="script/addTeamMember.js"></script>
 </body>
 
 </html>
