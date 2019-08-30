@@ -178,6 +178,35 @@ app.get("/index.html", function (req, res) {
     res.sendFile( __dirname + "/public/" + "index.html" );
  })
 
+ app.get("/search.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "search.html" );
+ })
+
+ app.get("/about.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "about.html" );
+ })
+
+ app.get("/gallery.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "gallery.html" );
+ })
+
+ app.get("/teamDetails.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "teamDetails.html" );
+ })
+
+ app.get("/addTeam.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "addTeam.html" );
+ })
+
+ app.get("/editTeam.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "editTeam.html" );
+ })
+
+ app.get("/addTeamMember.html", function (req, res) {
+    res.sendFile( __dirname + "/public/" + "addTeamMember.html" );
+ })
+
+
 // TODO:  YOU WILL NEED TO ADD MORE CALLS TO app.get() FOR EACH PAGE
 //        YOU END UP BUILDING
 
