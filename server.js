@@ -371,7 +371,8 @@ app.post("/api/teams", urlencodedParser, function (req, res) {
    
     //console.log("New team added: ");
 	//logOneTeam(team);
-    res.status(200).send();
+    //res.status(200).send();
+    res.end(JSON.stringify(team));
  })
 
  // EDIT A TEAM
