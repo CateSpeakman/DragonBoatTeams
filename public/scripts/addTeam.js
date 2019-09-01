@@ -33,6 +33,7 @@ $(function () {
 
     $("#submitBtn").on("click", function () {
 
+        console.log("we in");
 
         let isValid = formValidation();
 
@@ -41,7 +42,8 @@ $(function () {
         }
         let str = $("#addTeamForm").serialize()
         $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
-            window.location.href = "search.html";
+            data = JSON.parse(data);
+            window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
             alert("Add Team successful");
         });
 
@@ -104,4 +106,4 @@ function formValidation() {
         }
         return false;
     }
-}//ends on click function
+}//ends on validation function
