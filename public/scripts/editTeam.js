@@ -8,9 +8,26 @@
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
-    let teamId = urlParams.get("teamId");
+    let teamid = urlParams.get("teamid");
 
     let obj;
+
+    $.getJSON("/api/teams/" + teamid, function (team) {
+        obj = team;
+
+        $("#teamName").val(obj.TeamName);
+        $("#league").val(obj.League);
+        $("#managerName").val(obj.ManagerName);
+        $("#managerPhone").val(obj.ManagerPhone);
+        $("#managerEmail").val(obj.ManagerEmail);
+        $("#maxTeamMembers").val(obj.MaxTeamMembers);
+        $("#minMemberAge").val(obj.MinMemberAge);
+        $("#maxMemberAge").val(obj.MaxMemberAge);
+        $("#teamGender").val(obj.TeamGender);
+
+    })//ends JSON function to find team name and insert into form 
+    
+
     $("#editBtn").on("click", function () {
         let isValid = formValidation();
 
@@ -32,26 +49,8 @@ $(function () {
         });
 
         return false;
-    });//end of on click
+    });//end of on click function
 
-
-    //this function will pull the team ID and list the team details 
-
-    $.getJSON("/api/teams/" + teamId, function (team) {
-
-        obj = team;
-
-        $("#teamName").val(obj.TeamName);
-        $("#league").val(obj.League);
-        $("#managerName").val(obj.ManagerName);
-        $("#managerPhone").val(obj.ManagerPhone);
-        $("#managerEmail").val(obj.ManagerEmail);
-        $("#maxTeamMembers").val(obj.MaxTeamMembers);
-        $("#minMemberAge").val(obj.MinMemberAge);
-        $("#maxMemberAge").val(obj.MaxMemberAge);
-        $("#teamGender").val(obj.TeamGender);
-
-    });//ends JSON function
 
 });//ends the onload function           
 
@@ -109,4 +108,4 @@ function formValidation() {
         }
         return false;
     }
-}//ends on click function
+}//ends form validation function
