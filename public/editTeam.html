@@ -48,18 +48,21 @@
                 <h1 id="editTeamBanner">Edit Team</h1>
                 <p> Edit the information below.  Once changes have been made, click on edit to save team
                     information. </p>
+
             <form id="editTeamForm">
+                <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="teamName">Team Name</label>
                     <input type="text" class="form-control" id="teamName" name="teamname" required>
                 </div>
+            </div>
             
             
             
-            <div class="row">
-                <div class="col-md-4">
+            <div class="form-row">
+                <div class=" form-group col-md-4">
                     <label class="form-check-label" for="league">League:</label>
-                    <input type="text" class="form-control" id="league" name="league" readonly>
+                    <input type="text" class="form-control" id="league" name="leaguecode" readonly>
                 </div>
             </div>
 
@@ -87,7 +90,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="maxTeamMember">Max # Team Members</label>
-                    <input type="text" class="form-control" id="maxTeamMember" name="maxteammembers" required>
+                    <input type="text" class="form-control" id="maxTeamMembers" name="maxteammembers" required>
                 </div>
             </div>
 
@@ -107,20 +110,20 @@
 
             <div class="form-check form-check-inline">
 
-                <input class="form-check-input" type="radio" name="teamgender" id="male" value="male" checked>
+                <input class="form-check-input" type="radio" name="teamgender" id="male" value="Male" checked>
                 <label class="form-check-label" for="male">Male</label>
             </div>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="teamgender" id="female"
-                    value="female">
+                    value="Female">
                 <label class="form-check-label" for="female">Female</label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="teamgender" id="all"
-                    value="all">
-                <label class="form-check-label" for="all">All</label>
+                <input class="form-check-input" type="radio" name="teamgender" id="any"
+                    value="any">
+                <label class="form-check-label" for="any">Any</label>
             </div>
         </form>
                 <div class="container">
