@@ -149,16 +149,22 @@ function isValidTeam(team)
 
 function isValidMember(member)
 {
+    console.log("preparing to validate email");
     if (member.Email == undefined || member.Email.trim() == "")
        return false;
+       console.log("preparing to validate membername");
     if (member.MemberName == undefined || member.MemberName.trim() == "")
-       return false;    
+       return false; 
+       console.log("preparing to validate contactname");   
     if (member.ContactName == undefined || member.ContactName.trim() == "")
        return false;    
+       console.log("preparing to validate phone");
     if (member.Phone == undefined || member.Phone.trim() == "")
        return false; 
+       console.log("preparing to validate age");
     if (member.Age == undefined || isNaN(member.Age))
        return false; 
+       console.log("preparing to validate email");
     if (member.Gender == undefined || member.Gender.trim() == "")
        return false; 
     if (member.Gender != "Any" && member.Gender != "Male" && member.Gender != "Female")
@@ -230,6 +236,22 @@ app.get("/api/leagues", function (req, res) {
     res.end( JSON.stringify(data) );
 });
 
+// GET LEAGUE by COod
+app.get("/api/leagues/:id", function (req, res) {
+    let id = req.params.id;
+    console.log("Received a GET request for league  " + id);                      
+
+    let data = fs.readFileSync( __dirname + "/data/leagues.json", "utf8");
+    data = JSON.parse(data);
+
+    // find the matching league 
+    let match = data.find(leag=>leag.Code == id)
+
+    //console.log("Returned data is: ");
+    //console.log(JSON.stringify(match));
+    res.end( JSON.stringify(match) );
+})
+
 // GET ALL TEAMS
 app.get("/api/teams", function (req, res) {
     console.log("Received a GET request for ALL teams");
@@ -277,6 +299,8 @@ app.get("/api/teams/byleague/:id", function (req, res) {
     //logArrayOfTeams(matches);
     res.end( JSON.stringify(matches) );
 })
+
+
 
 // GET A SPECIFIC MEMBER ON A SPECIFIC TEAM
 app.get("/api/teams/:teamid/members/:memberid", function (req, res) {

@@ -13,13 +13,12 @@ $(function () {
         objs = leagues;
 
         for (let i = 0; i < objs.length; i++) {
-
-            let league = objs[i];
+        
             //put league type into ddl
 
             let option = document.createElement("option");
-            option.text = category.Category;
-            option.value = category.Category;
+            option.text = objs[i].Name;
+            option.value = objs[i].Name;
 
             $("#leagueList").append(option);
 
