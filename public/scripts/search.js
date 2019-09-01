@@ -19,12 +19,11 @@ $(function () {
 
         for (let i = 0; i < objs.length; i++) {
 
-            let league = objs[i];
             //put league type into ddl
 
             let option = document.createElement("option");
-            option.text = league.Category;
-            option.value = league.Value;
+            option.text = objs[i].Name;
+            option.value = objs[i].Code;
 
             $("#leagueList").append(option);
 
@@ -34,8 +33,8 @@ $(function () {
     })//ends Json function
 
     $("#leagueList").on("change", showTeamByLeague)
-    $("#managerList").on("change", showTeamByManager)
-    $("#allTeams").on("click", showAllTeams)
+
+    $("#allTeamsBtn").on("click", showAllTeams)
 
 })//ends ready function
 
@@ -44,55 +43,32 @@ $(function () {
 function showTeamByLeague() {
     let objs;
 
-    if ($("#leagueList").val() != "-1"){
-    $.getJSON("/api/teams/byleague/" + $('#leagueList').val(), function (teams) {
+    if ($("#leagueList").val() != "-1") {
+        $.getJSON("/api/teams/byleague/" + $('#leagueList').val(), function (teams) {
 
-        objs =teams;
-        $("#teamTable tbody").empty();
+            objs = teams;
+            $("#teamTable tbody").empty();
 
-        for (let i = 0; i < objs.length; i++) {
-            
-                let teamRow = "<tr><td>" + objs[i].teamname
-                    + "</td><td>" + objs[i].leaguecode
-                    + "</td><td><a href='teamDetails.html?teamid=" + objs[i].teamid + "'>Details</a>"
-                    + "</td><td><a href='editTeam.html?teamid=" + objs[i].teamid + "'>Edit</a>"
+            for (let i = 0; i < objs.length; i++) {
+
+                let teamRow = "<tr><td>" + objs[i].TeamName
+                    + "</td><td>" + objs[i].League
+                    + "</td><td><a href='teamDetails.html?teamid=" + objs[i].TeamId + "'>Details</a>"
+                    + "</td><td><a href='editTeam.html?teamid=" + objs[i].TeamId + "'>Edit</a>"
                     + "</td></tr>";
                 $("#teamTable tbody").append(teamRow);
-          
 
-        }//ends for loop for populating table based on DDL selection
-    });//ends JSON function
+
+            }//ends for loop for populating table based on DDL selection
+        });//ends JSON function
     }//ends if statement for league list
 }//ends show Team By League function
 
-function showTeamByManager() {
-    let obj;
-
-    if ($("#managerList").val() != "-1"){
-    $.getJSON("/api/teams/teammanager/" + $('#managerList').val(), function (team) {
-
-        obj = team;
-        $("#teamTable tbody").empty();
-
-        for (let i = 0; i < obj.length; i++) {
-            
-                let teamRow = "<tr><td>" + obj[i].teamname
-                    + "</td><td>" + obj[i].leaguecode
-                    + "</td><td><a href='teamDetails.html?teamid=" + obj[i].teamid + "'>Details</a>"
-                    + "</td><td><a href='editTeam.html?teamid=" + obj[i].teamid + "'>Edit</a>"
-                    + "</td></tr>";
-                $("#teamTable tbody").append(teamRow);
-          
-
-        }//ends for loop for populating table based on DDL selection
-    });//ends JSON function
-    }//ends if statement for manager list 
-}//ends show team by manager function
-
-
-
 function showAllTeams() {
     let objs;
+
+    console.log("we in");
+
 
     $.getJSON("/api/teams/", function (teams) {
 
@@ -100,14 +76,14 @@ function showAllTeams() {
         $("#teamTable tbody").empty();
 
         for (let i = 0; i < objs.length; i++) {
-            
-                let teamRow = "<tr><td>" + objs[i].teamname
-                    + "</td><td>" + objs[i].leaguecode
-                    + "</td><td><a href='teamDetails.html?teamid=" + objs[i].teamId + "'>Details</a>"
-                    + "</td><td><a href='editTeam.html?teamid=" + objs[i].teamid + "'>Edit</a>"
-                    + "</td></tr>";
-                $("#teamTable tbody").append(teamRow);
-          
+
+            let teamRow = "<tr><td>" + objs[i].TeamName
+                + "</td><td>" + objs[i].League
+                + "</td><td><a href='teamDetails.html?teamid=" + objs[i].TeamId + "'>Details</a>"
+                + "</td><td><a href='editTeam.html?teamid=" + objs[i].TeamId + "'>Edit</a>"
+                + "</td></tr>";
+            $("#teamTable tbody").append(teamRow);
+
 
         }//ends for loop for populating table based on DDL selection
     });//ends JSON function

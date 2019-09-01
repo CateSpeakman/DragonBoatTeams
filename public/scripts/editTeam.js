@@ -41,16 +41,15 @@ $(function () {
 
         obj = team;
 
-        $("#teamName").val(obj.teamName);
-
-        $("#league").val(obj.league);
-        $("#managerName").val(obj.managerName);
-        $("#managerPhone").val(obj.managerPhone);
-        $("#managerEmail").val(obj.managerEmail);
-        $("#maxTeamMembers").val(obj.maxTeamMembers);
-        $("#minMemberAge").val(obj.minMemberAge);
-        $("#maxMemberAge").val(obj.maxMemberAge);
-        $("#teamGender").val(obj.teamGender);
+        $("#teamName").val(obj.TeamName);
+        $("#league").val(obj.League);
+        $("#managerName").val(obj.ManagerName);
+        $("#managerPhone").val(obj.ManagerPhone);
+        $("#managerEmail").val(obj.ManagerEmail);
+        $("#maxTeamMembers").val(obj.MaxTeamMembers);
+        $("#minMemberAge").val(obj.MinMemberAge);
+        $("#maxMemberAge").val(obj.MaxMemberAge);
+        $("#teamGender").val(obj.TeamGender);
 
     });//ends JSON function
 

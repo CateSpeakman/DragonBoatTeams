@@ -1,4 +1,5 @@
 "use strict";
+
 //Description: This script will add a member to team  based on team being viewed by user on the previous page.
 //This information will be posted from a restful API server. 
 //Author:Cate Speakman
@@ -9,9 +10,23 @@
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
-    let id = urlParams.get("teamId");
+    let id = urlParams.get("teamid");
 
-    $("#teamId").val(id);
+    let obj;
+
+     $.getJSON("/api/teams/" + id, function (team) {
+        obj = team;
+
+        $("#teamName").val(obj.TeamName);
+
+
+        $.getJSON("/api/leagues/" + obj.League, function(league){
+            obj = league;
+            $("#league").val(obj.Name);
+        })//ends JSON function to find the team name and insert into form
+
+    })//ends JSON function to find team name and insert into form 
+            
 
     //this posts the new team member information to the server
     $("#saveBtn").on("click", function () {
@@ -24,7 +39,7 @@ $(function () {
             return;
         }
        
-        $.post("/api/teams/teamid/members", $("#registerForm").serialize(), function (data) {
+        $.post("/api/teams/" + id + "/members", $("#registerForm").serialize(), function (data) {
             window.location.href = "teamDetails.html?teamid=" + id;
             alert("register successful");
         });
@@ -59,9 +74,9 @@ function formValidation() {
         errMsg[errMsg.length] = "Age is required";
     }//ends if statement for age validation
 
-    if ($("#gender").val().trim() == "") {
-        errMsg[errMsg.length] = "Gender is required";
-    }//ends if statement for age validation
+    // if ($("#gender").val().trim() == "") {
+    //     errMsg[errMsg.length] = "Gender is required";
+    // }//ends if statement for age validation
 
     if ($("#phone").val().trim() == "") {
         errMsg[errMsg.length] = "Phone is required";
