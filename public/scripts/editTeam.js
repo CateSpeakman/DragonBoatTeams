@@ -27,7 +27,7 @@ $(function () {
             method: 'PUT', // method is any HTTP method
             success: function () {
                 alert("Working");
-                window.location.href = "teamDetails.html?teamid=" + $("#teamid").val();
+                window.location.href = "teamDetails.html?teamid=" + $("#teamId").val();
             }
         });
 
@@ -37,7 +37,7 @@ $(function () {
 
     //this function will pull the team ID and list the team details 
 
-    $.getJSON("/api/teams/" + teamid, function (team) {
+    $.getJSON("/api/teams/" + teamId, function (team) {
 
         obj = team;
 
