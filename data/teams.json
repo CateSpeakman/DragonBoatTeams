@@ -88,8 +88,8 @@
         "ManagerName": "Brock Lesnar",
         "ManagerPhone": "860-867-5308",
         "ManagerEmail": "suplexcity@gmail.com",
-        "MinAge": 0,
-        "MaxAge": 100,
+        "MinMemberAge": 0,
+        "MaxMemberAge": 100,
         "MaxTeamMembers": 6,
         "TeamGender": "Any",
         "Members": [
@@ -120,8 +120,8 @@
         "ManagerName": "Ric Flair",
         "ManagerPhone": "860-867-1111",
         "ManagerEmail": "whooclan@gmail.com",
-        "MinAge": 65,
-        "MaxAge": 100,
+        "MinMemberAge": 65,
+        "MaxMemberAge": 100,
         "MaxTeamMembers": 6,
         "TeamGender": "Any",
         "Members": [
