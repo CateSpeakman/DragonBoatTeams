@@ -394,14 +394,14 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
         TeamGender: req.body.teamgender,
     };
 
-    //console.log("Performing team validation...")
+    console.log("Performing team validation...")
     if (! isValidTeam(team))
     {
         //console.log("Invalid  data!")
 		res.status(400).send("Bad Request - Incorrect or Missing Data");
 		return;      
     }
-    //console.log("Valid data!")
+    console.log("Valid data!")
 
     let data = fs.readFileSync( __dirname + "/data/teams.json", "utf8");
     data = JSON.parse( data );
@@ -410,6 +410,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
     let match = getMatchingTeamById(req.body.teamid, data)
     if (match == null)
 	{
+        console.log("Team not found");
 		res.status(404).send("Not Found");
 		return;
     }
@@ -424,8 +425,11 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
     // make sure new values for max members, min/max age, or gender
     // don't conflict with members already on team
 
+    console.log("validating no conflict changes...")
+
     if ( Number(req.body.maxteammembers) < match.Members.length )
     {
+        console.log("Team size too small based on current roster.")
         res.status(409).send("Team size too small based on current roster");
 		return;
     }
@@ -433,6 +437,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( Number(req.body.minmemberage) > getMinAgeOfMember(match) )
     {
+        console.log("Minimum age is greater than current member on team.")
         res.status(409).send("Minimum age is greater than current member on team");
 		return;
     }
@@ -440,6 +445,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( Number(req.body.maxmemberage) < getMaxAgeOfMember(match) )
     {
+        console.log("Maximum age is less than current member on team")
         res.status(409).send("Maximum age is less than current member on team");
 		return;
     }
@@ -447,6 +453,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( isThereAnyGenderChangeConflicts(req.body.teamgender, match) )
     {
+        console.log("Gender change conflicts with current member on team")
         res.status(409).send("Gender change conflicts with current member on team");
 		return;
     }
@@ -455,8 +462,8 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     fs.writeFileSync(__dirname + "/data/teams.json", JSON.stringify(data));
    
-    //console.log("Team updated!");
-	//logOneTeam(match);
+    console.log("Team updated!");
+	logOneTeam(match);
     res.status(200).send();
  })
 
