@@ -13,7 +13,7 @@ $(function () {
         objs = leagues;
 
         for (let i = 0; i < objs.length; i++) {
-        
+
             //put league type into ddl
 
             let option = document.createElement("option");
@@ -27,6 +27,19 @@ $(function () {
 
     })//ends Json function
 
+    const allInputTextFields = document.querySelectorAll("input[type='text']");
+
+    //this will make all fields have a beige background when user is in text box
+    for (let i = 0; i < allInputTextFields.length; i++) {
+        allInputTextFields[i].onfocus = function () {
+            this.style.backgroundColor = "beige";
+        };
+
+        allInputTextFields[i].onblur = function () {
+            this.style.backgroundColor = "";
+        };
+
+    }
 
     //this onclick function will trigger form validation and will post the new team to be added provided
     //the form passes validation 
@@ -94,7 +107,7 @@ function formValidation() {
         errMsg[errMsg.length] = "Maximum Member Age is required";
     }
 
-//placeholder for team gender pending Dana clarification
+    //placeholder for team gender pending Dana clarification
 
 
     if (errMsg.length == 0) {
