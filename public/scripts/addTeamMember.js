@@ -27,8 +27,20 @@ $(function () {
 
     })//ends JSON function to find team name and insert into form 
             
+    const allInputTextFields = document.querySelectorAll("input[type='text']");
 
-    //this posts the new team member information to the server
+    //this will make all fields have a beige background when user is in text box
+    for (let i = 0; i < allInputTextFields.length; i++) {
+        allInputTextFields[i].onfocus = function () {
+            this.style.backgroundColor = "beige";
+        };
+
+        allInputTextFields[i].onblur = function () {
+            this.style.backgroundColor = "";
+        };
+
+    }
+   //this posts the new team member information to the server
     $("#saveBtn").on("click", function () {
 
 

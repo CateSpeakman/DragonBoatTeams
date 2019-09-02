@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item >
-                    <a class="nav-link" id="homeNav" href="index.html">Home </a>
+                    <a class=" nav-link" id="homeNav" href="index.html">Home </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="aboutUsNav" href="about.html">About Us</a>
@@ -41,117 +41,120 @@
             <img class="float-right" id="navpic" src="images/boat1.jpg" alt="dragon boat">
         </div>
     </nav>
- <!--End of Nav Bar -->
-  <main>
-       
+    <!--End of Nav Bar -->
+    <main>
+
         <div class="container">
-                <h1 id="editTeamBanner">Edit Team</h1>
-                <p> Edit the information below.  Once changes have been made, click on edit to save team
-                    information. </p>
+            <h1 id="editTeamBanner">Edit Team</h1>
+            <p> Edit the information below. Once changes have been made, click on edit to save team
+                information. </p>
+
+
 
             <form id="editTeamForm">
+
+                <input type="hidden" id="teamid" name="teamid">
+
                 <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="teamName">Team Name</label>
-                    <input type="text" class="form-control" id="teamName" name="teamname" required>
-                </div>
-            </div>
-            
-            
-            
-            <div class="form-row">
-                <div class=" form-group col-md-4">
-                    <label class="form-check-label" for="league">League:</label>
-                    <input type="text" class="form-control" id="league" name="leaguecode" readonly>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="managerName">Manager Name</label>
-                    <input type="text" class="form-control" id="managerName" name="managername" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="managerPhone">Manager Phone</label>
-                    <input type="text" class="form-control" id="managerPhone" name="managerphone" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="managerEmail">Manager Email</label>
-                    <input type="text" class="form-control" id="managerEmail" name="manageremail" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="maxTeamMember">Max # Team Members</label>
-                    <input type="text" class="form-control" id="maxTeamMembers" name="maxteammembers" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="minMemberAge">Minimum Member Age</label>
-                    <input type="text" class="form-control" id="minMemberAge" name="minmemberage" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="maxMemberAge">Maximum Member Age</label>
-                    <input type="text" class="form-control" id="maxMemberAge" name="maxmemberage" required>
-                </div>
-            </div>
-
-            <div class="form-check form-check-inline">
-
-                <input class="form-check-input" type="radio" name="teamgender" id="male" value="Male" checked>
-                <label class="form-check-label" for="male">Male</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="teamgender" id="female"
-                    value="Female">
-                <label class="form-check-label" for="female">Female</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="teamgender" id="any"
-                    value="any">
-                <label class="form-check-label" for="any">Any</label>
-            </div>
-        </form>
-                <div class="container">
-                    <div class="row">
-                        <button type="button" id="editBtn" class="btn btn-primary">Edit</button>
+                    <div class="form-group col-md-4">
+                        <label for="teamname">Team Name</label>
+                        <input type="text" class="form-control" id="teamname" name="teamname" required>
                     </div>
                 </div>
-            
-       
-        <div class="container">
-            <div id="msgDiv">
-                <ul id="errorMessages"></ul>
+
+
+
+                <div class="form-row">
+                    <div class=" form-group col-md-4">
+                        <label class="form-check-label" for="league">League:</label>
+                        <input type="text" class="form-control" id="league" name="leaguecode" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="managername">Manager Name</label>
+                        <input type="text" class="form-control" id="managername" name="managername" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="managerphone">Manager Phone</label>
+                        <input type="text" class="form-control" id="managerphone" name="managerphone" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="manageremail">Manager Email</label>
+                        <input type="text" class="form-control" id="manageremail" name="manageremail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="maxteammembers">Max # Team Members</label>
+                        <input type="text" class="form-control" id="maxteammembers" name="maxteammembers" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="minmemberage">Minimum Member Age</label>
+                        <input type="text" class="form-control" id="minmemberage" name="minmemberage" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="maxmemberage">Maximum Member Age</label>
+                        <input type="text" class="form-control" id="maxmemberage" name="maxmemberage" required>
+                    </div>
+                </div>
+
+                <div class="form-check form-check-inline">
+
+                    <input class="form-check-input" type="radio" name="teamgender" id="male" value="Male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="teamgender" id="female" value="Female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="teamgender" id="any" value="Any">
+                    <label class="form-check-label" for="any">Any</label>
+                </div>
+            </form>
+            <div class="container">
+                <div class="row">
+                    <button type="button" id="editBtn" class="btn btn-primary">Edit</button>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div id="msgDiv">
+                    <ul id="errorMessages"></ul>
+                </div>
             </div>
         </div>
-    </div>
 
-</main>
+    </main>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="scripts/editTeam.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="scripts/editTeam.js"></script>
 </body>
 
 </html>
