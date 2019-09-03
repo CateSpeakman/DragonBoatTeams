@@ -26,12 +26,11 @@ $(function () {
 
       
         $("input[name='teamgender'][value='" +obj.TeamGender+ "']").prop("checked", true)
-        //$("#teamgender").val(obj.TeamGender);
-        //  $("input[name='teamgender'][value='Any']").prop("checked", true)
-
+        
     })//ends JSON function to find team name and insert into form 
 
-    const allInputTextFields = document.querySelectorAll("input[type='text']");
+    const allInputTextFields = 
+    document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
 
     //this will make all fields have a beige background when user is in text box
     for (let i = 0; i < allInputTextFields.length; i++) {
