@@ -62,7 +62,22 @@ $(function () {
         });
 
         return false;
-    });//end of on click
+    });//end of on click for save button
+
+
+    $("#resetBtn").on("click", function () {
+
+        console.log("we in");
+
+        $("#memberName").html("");
+        $("#contactName").html("");
+        $("#email").html("");
+        $("#age").html("");
+        $("#phone").html("");
+
+    });//ends of on click for reset button
+
+
 });//end of ready function
 
 function formValidation() {
@@ -108,4 +123,4 @@ function formValidation() {
         }
         return false;
     }
-}
+}//ends form validation 
