@@ -8,9 +8,30 @@
 $(function () {
 
     let urlParams = new URLSearchParams(location.search);
-    let teamId = urlParams.get("teamId");
+    let teamid = urlParams.get("teamid");
 
     let obj;
+
+    $.getJSON("/api/teams/" + teamid, function (team) {
+        obj = team;
+        $("#teamid").val(obj.TeamId);
+        $("#teamname").val(obj.TeamName);
+        $("#league").val(obj.League);
+        $("#managername").val(obj.ManagerName);
+        $("#managerphone").val(obj.ManagerPhone);
+        $("#manageremail").val(obj.ManagerEmail);
+        $("#maxteammembers").val(obj.MaxTeamMembers);
+        $("#minmemberage").val(obj.MinMemberAge);
+        $("#maxmemberage").val(obj.MaxMemberAge);
+
+      
+        $("input[name='teamgender'][value='" +obj.TeamGender+ "']").prop("checked", true)
+        //$("#teamgender").val(obj.TeamGender);
+        //  $("input[name='teamgender'][value='Any']").prop("checked", true)
+
+    })//ends JSON function to find team name and insert into form 
+
+
     $("#editBtn").on("click", function () {
         let isValid = formValidation();
 
@@ -18,7 +39,8 @@ $(function () {
             return false;
         }
 
-        let str = alert($("#editTeamForm").serialize());
+
+        alert("About to send changes...")
         $.ajax({
             url: '/api/teams', // your api url
             // jQuery < 1.9.0 -> use type
@@ -26,32 +48,14 @@ $(function () {
             data: $("#editTeamForm").serialize(),
             method: 'PUT', // method is any HTTP method
             success: function () {
-                alert("Working");
+                alert("change confirmed")
                 window.location.href = "teamDetails.html?teamid=" + $("#teamid").val();
             }
         });
 
         return false;
-    });//end of on click
+    });//end of on click function
 
-
-    //this function will pull the team ID and list the team details 
-
-    $.getJSON("/api/teams/" + teamid, function (team) {
-
-        obj = team;
-
-        $("#teamName").val(obj.TeamName);
-        $("#league").val(obj.League);
-        $("#managerName").val(obj.ManagerName);
-        $("#managerPhone").val(obj.ManagerPhone);
-        $("#managerEmail").val(obj.ManagerEmail);
-        $("#maxTeamMembers").val(obj.MaxTeamMembers);
-        $("#minMemberAge").val(obj.MinMemberAge);
-        $("#maxMemberAge").val(obj.MaxMemberAge);
-        $("#teamGender").val(obj.TeamGender);
-
-    });//ends JSON function
 
 });//ends the onload function           
 
@@ -62,21 +66,21 @@ function formValidation() {
 
     let errMsg = [];
 
-    if ($("#teamName").val().trim() == "") {
+    if ($("#teamname").val().trim() == "") {
         errMsg[errMsg.length] = "Team Name is required";
     }
 
-    if ($("#managerName").val().trim() == "") {
+    if ($("#managername").val().trim() == "") {
         errMsg[errMsg.length] = "Manager Name is required";
     }
 
-    if ($("#managerPhone").val().trim() == "") {
+    if ($("#managerphone").val().trim() == "") {
         errMsg[errMsg.length] = "Manager Phone is required";
     }
 
 
     let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    let email = $("#managerEmail").val();
+    let email = $("#manageremail").val();
 
 
     if (emailPattern.test(email) == false) {
@@ -84,21 +88,17 @@ function formValidation() {
     }//ends if statement for email validation
 
 
-
-    if ($("#maxTeamMembers").val().trim() == "") {
+    if ($("#maxteammembers").val().trim() == "") {
         errMsg[errMsg.length] = "Maximum # Team Members is required";
     }
 
-    if ($("#minMemberAge").val().trim() == "") {
+    if ($("#minmemberage").val().trim() == "") {
         errMsg[errMsg.length] = "Minimum Member Age is required";
     }
 
-    if ($("#maxMemberAge").val().trim() == "") {
+    if ($("#maxmemberage").val().trim() == "") {
         errMsg[errMsg.length] = "Maximum Member Age is required";
     }
-
-    //placeholder for team gender pending Dana clarification
-
 
     if (errMsg.length == 0) {
         return true;
@@ -109,4 +109,4 @@ function formValidation() {
         }
         return false;
     }
-}//ends on click function
+}//ends form validation function

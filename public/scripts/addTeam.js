@@ -13,12 +13,12 @@ $(function () {
         objs = leagues;
 
         for (let i = 0; i < objs.length; i++) {
-        
+
             //put league type into ddl
 
             let option = document.createElement("option");
             option.text = objs[i].Name;
-            option.value = objs[i].Name;
+            option.value = objs[i].Code;
 
             $("#leagueList").append(option);
 
@@ -27,26 +27,63 @@ $(function () {
 
     })//ends Json function
 
+    const allInputTextFields = document.querySelectorAll("input[type='text']");
+
+    //this will make all fields have a beige background when user is in text box
+    for (let i = 0; i < allInputTextFields.length; i++) {
+        allInputTextFields[i].onfocus = function () {
+            this.style.backgroundColor = "beige";
+        };
+
+        allInputTextFields[i].onblur = function () {
+            this.style.backgroundColor = "";
+        };
+
+    }
 
     //this onclick function will trigger form validation and will post the new team to be added provided
     //the form passes validation 
 
-    $("#submitBtn").on("click", function () {
+    $("#submitBtn").on("click", function() {
 
+     
+        let isValid = formValidation();
+        alert("Valid: " + isValid);
+
+        if (isValid == false) {
+            return false;
+        }
+        // let str = $("#addTeamForm").serialize()
+        $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
+            data = JSON.parse(data);
+            window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
+            alert("Add Team successful");
+        });
+
+        return false; 
+
+    });
+
+  /*  $("#submitBtn").on("click", function () {
+
+        alert("OLD HELP");
+
+        console.log("we in");
 
         let isValid = formValidation();
 
         if (isValid == false) {
             return false;
         }
-        let str = $("#addTeamForm").serialize()
+        // let str = $("#addTeamForm").serialize()
         $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
-            window.location.href = "search.html";
+            data = JSON.parse(data);
+            window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
             alert("Add Team successful");
         });
 
-        return false;
-    });//end of on click
+        return false; 
+    });//end of on click */
 
 })//ends ready function
 
@@ -57,21 +94,21 @@ function formValidation() {
 
     let errMsg = [];
 
-    if ($("#teamName").val().trim() == "") {
+    if ($("#teamname").val().trim() == "") {
         errMsg[errMsg.length] = "Team Name is required";
     }
 
-    if ($("#managerName").val().trim() == "") {
+    if ($("#managername").val().trim() == "") {
         errMsg[errMsg.length] = "Manager Name is required";
     }
 
-    if ($("#managerPhone").val().trim() == "") {
+    if ($("#managerphone").val().trim() == "") {
         errMsg[errMsg.length] = "Manager Phone is required";
     }
 
 
     let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    let email = $("#managerEmail").val();
+    let email = $("#manageremail").val();
 
 
     if (emailPattern.test(email) == false) {
@@ -79,21 +116,17 @@ function formValidation() {
     }//ends if statement for email validation
 
 
-
-    if ($("#maxTeamMembers").val().trim() == "") {
+    if ($("#maxteammembers").val().trim() == "") {
         errMsg[errMsg.length] = "Maximum # Team Members is required";
     }
 
-    if ($("#minMemberAge").val().trim() == "") {
+    if ($("#minmemberage").val().trim() == "") {
         errMsg[errMsg.length] = "Minimum Member Age is required";
     }
 
-    if ($("#maxMemberAge").val().trim() == "") {
+    if ($("#maxmemberage").val().trim() == "") {
         errMsg[errMsg.length] = "Maximum Member Age is required";
     }
-
-//placeholder for team gender pending Dana clarification
-
 
     if (errMsg.length == 0) {
         return true;
@@ -104,4 +137,4 @@ function formValidation() {
         }
         return false;
     }
-}//ends on click function
+}//ends on validation function
