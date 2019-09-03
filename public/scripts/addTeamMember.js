@@ -12,6 +12,10 @@ $(function () {
     let urlParams = new URLSearchParams(location.search);
     let id = urlParams.get("teamid");
 
+
+    $("#cancelBtn").prop("href", "teamDetails.html?teamid=" + id);
+
+
     let obj;
 
      $.getJSON("/api/teams/" + id, function (team) {
@@ -27,7 +31,7 @@ $(function () {
 
     })//ends JSON function to find team name and insert into form 
             
-    const allInputTextFields = document.querySelectorAll("input[type='text']");
+    const allInputTextFields = document.querySelectorAll("input[type='text'], input[type='email']");
 
     //this will make all fields have a beige background when user is in text box
     for (let i = 0; i < allInputTextFields.length; i++) {
