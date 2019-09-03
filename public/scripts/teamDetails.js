@@ -9,64 +9,27 @@ $(function () {
 
     let urlParams = new URLSearchParams(location.search);
     let teamId = urlParams.get("teamid");
-    
-
+   
     $("#registerBtn").prop("href", "addTeamMember.html?teamid=" + teamId);
+    $("#backBtn").prop("href", "search.html");
 
     let obj;
+    
+        $.getJSON("/api/teams/" + teamId, function (team) {
+            obj = team;
+            $("#teamInfoCard").html(obj.TeamName);
+            $("#cardText1").html("League: " + obj.League);
+            $("#cardText2").html("Manager Name: " + obj.ManagerName);
+            $("#cardText3").html("Manager Phone: " + obj.ManagerPhone);
+            $("#cardText4").html("Manager Email: " + obj.ManagerEmail);
+            $("#rulesCard").html("Team Rules");
+            $("#cardText5").html("Maximum # Team Members: " + obj.MaxTeamMembers);
+            $("#cardText6").html("Minimum Member Age: " + obj.MinMemberAge);
+            $("#cardText7").html("Maximum Member Age: " + obj.MaxMemberAge);
+            $("#cardText8").html("Team Gender: " + obj.TeamGender);
+             
 
-//this function will pull the team ID and list the team details 
-
-    $.getJSON("/api/teams/" + teamId, function (team) {
-
-        obj = team;
-
-        let teamNameRow = "<tr><td>" + "Team name: "
-            + "</td><td>" + obj.TeamName
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(teamNameRow);
-
-        let leagueRow = "<tr><td>" + "League: "
-            + "</td><td>" + obj.League
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(leagueRow);
-
-        let managerNameRow = "<tr><td>" + "Manager name: "
-            + "</td><td>" + obj.ManagerName
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(managerNameRow);
-
-        let managerPhoneRow = "<tr><td>" + "Manager phone: "
-            + "</td><td>" + obj.ManagerPhone
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(managerPhoneRow);
-
-        let managerEmailRow = "<tr><td>" + "Manager email: "
-            + "</td><td>" + obj.ManagerEmail
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(managerEmailRow);
-
-        let maxTeamMembersRow = "<tr><td>" + "Maximum # team members: "
-            + "</td><td>" + obj.MaxTeamMembers
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(maxTeamMembersRow);
-
-        let minMemberAgeRow = "<tr><td>" + "Minimum member age: "
-            + "</td><td>" + obj.MinMemberAge
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(minMemberAgeRow);
-
-        let maxMemberAgeRow = "<tr><td>" + "Maximum member age: "
-            + "</td><td>" + obj.MaxMemberAge
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(maxMemberAgeRow);
-
-        let teamGenderRow = "<tr><td>" + "Team gender: "
-            + "</td><td>" + obj.TeamGender
-            + "</td></tr>";
-        $("#teamDetailsTable tbody").append(teamGenderRow);
-
-        //this if statement will look to see if any team members are registered and if so display the list
+           //this if statement will look to see if any team members are registered and if so display the list
         if (obj.Members.length == 0) {
             $("#memberListDiv").hide();
         }
@@ -74,7 +37,7 @@ $(function () {
             $("#memberListDiv").show();
         }
         for (let i = 0; i < obj.Members.length; i++) {
-           
+
             let memberRow = "<tr><td>" + obj.Members[i].MemberName
                 + "</td><td>" + obj.Members[i].Email
                 + "</td><td>" + obj.Members[i].Phone
@@ -83,6 +46,8 @@ $(function () {
 
         }//ends for loop
 
-    });//ends JSON function
+    })//ends JSON function
 
 });//ends the onload function           
+
+
