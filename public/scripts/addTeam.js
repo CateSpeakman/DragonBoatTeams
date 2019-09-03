@@ -22,13 +22,15 @@ $(function () {
 
             $("#leagueList").append(option);
 
+            
         };//end of the for loop for populating dropdown of leagues
-
 
     })//ends Json function
 
-    const allInputTextFields = 
-    document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
+   
+
+    const allInputTextFields =
+        document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
 
     //this will make all fields have a beige background when user is in text box
     for (let i = 0; i < allInputTextFields.length; i++) {
@@ -42,49 +44,29 @@ $(function () {
 
     }
 
+
     //this onclick function will trigger form validation and will post the new team to be added provided
     //the form passes validation 
 
-    $("#submitBtn").on("click", function() {
+    $("#submitBtn").on("click", function () {
 
-     
         let isValid = formValidation();
-        alert("Valid: " + isValid);
-
+        
         if (isValid == false) {
             return false;
         }
-        // let str = $("#addTeamForm").serialize()
+       
         $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
             data = JSON.parse(data);
             window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
             alert("Add Team successful");
         });
 
-        return false; 
+        return false;
 
-    });
+    });//ends on click function for submit button
 
-  /*  $("#submitBtn").on("click", function () {
 
-        alert("OLD HELP");
-
-        console.log("we in");
-
-        let isValid = formValidation();
-
-        if (isValid == false) {
-            return false;
-        }
-        // let str = $("#addTeamForm").serialize()
-        $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
-            data = JSON.parse(data);
-            window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
-            alert("Add Team successful");
-        });
-
-        return false; 
-    });//end of on click */
 
 })//ends ready function
 
@@ -139,3 +121,22 @@ function formValidation() {
         return false;
     }
 }//ends on validation function
+
+$("#leagueList").on("change", ()=> {
+
+    let obj;
+
+    let leaguecode =$('#leagueList').val();
+
+    $.getJSON("/api/leagues/" + leaguecode, function (league) {
+        obj = league;
+
+        $("#minmemberage").val(obj.MinAge)
+                        .attr("readonly", true);
+        $("#maxmemberage").val(obj.MaxAge)
+                        .attr("readonly", true);
+        $("input[name='teamgender'][value='" + obj.Gender + "']").prop("checked", true)
+
+    })//ends JSON function to find league and insert league requirements
+
+});//ends on change function for league list 

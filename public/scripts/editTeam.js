@@ -22,9 +22,7 @@ $(function () {
         $("#manageremail").val(obj.ManagerEmail);
         $("#maxteammembers").val(obj.MaxTeamMembers);
         $("#minmemberage").val(obj.MinMemberAge);
-        $("#maxmemberage").val(obj.MaxMemberAge);
-
-      
+        $("#maxmemberage").val(obj.MaxMemberAge);     
         $("input[name='teamgender'][value='" +obj.TeamGender+ "']").prop("checked", true)
         
     })//ends JSON function to find team name and insert into form 
