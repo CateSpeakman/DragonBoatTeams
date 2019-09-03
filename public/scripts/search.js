@@ -11,7 +11,7 @@ $(function () {
     //restful API
 
     $("#addTeamBtn").prop("href", "addTeam.html");
-
+    $("#teamListDiv").hide();
     let objs;
     $.getJSON("/api/leagues", function (leagues) {
 
@@ -44,6 +44,8 @@ function showTeamByLeague() {
     let objs;
 
     if ($("#leagueList").val() != "-1") {
+
+        $("#teamListDiv").show();
         $.getJSON("/api/teams/byleague/" + $('#leagueList').val(), function (teams) {
 
             objs = teams;
@@ -66,7 +68,7 @@ function showTeamByLeague() {
 
 function showAllTeams() {
     let objs;
-
+    $("#teamListDiv").show();
     console.log("we in");
 
 

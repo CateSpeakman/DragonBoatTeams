@@ -31,6 +31,27 @@ $(function () {
 
     })//ends JSON function to find team name and insert into form 
 
+    const allInputTextFields = document.querySelectorAll("input[type='text']");
+
+    //this will make all fields have a beige background when user is in text box
+    for (let i = 0; i < allInputTextFields.length; i++) {
+        allInputTextFields[i].onfocus = function () {
+            this.style.backgroundColor = "beige";
+        };
+
+        allInputTextFields[i].onblur = function () {
+            this.style.backgroundColor = "";
+        };
+
+    }
+
+
+
+
+
+
+
+
 
     $("#editBtn").on("click", function () {
         let isValid = formValidation();
