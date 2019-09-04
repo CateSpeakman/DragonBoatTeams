@@ -7,10 +7,15 @@
 //this is the ready function for Jquery for the onload
 $(function () {
 
+
+    $("#cancelBtn").prop("href", "search.html");
+
+
     let urlParams = new URLSearchParams(location.search);
     let teamid = urlParams.get("teamid");
 
     let obj;
+    //this ajax call will populte all of the existing team information
 
     $.getJSON("/api/teams/" + teamid, function (team) {
         obj = team;
@@ -22,13 +27,13 @@ $(function () {
         $("#manageremail").val(obj.ManagerEmail);
         $("#maxteammembers").val(obj.MaxTeamMembers);
         $("#minmemberage").val(obj.MinMemberAge);
-        $("#maxmemberage").val(obj.MaxMemberAge);     
-        $("input[name='teamgender'][value='" +obj.TeamGender+ "']").prop("checked", true)
-        
+        $("#maxmemberage").val(obj.MaxMemberAge);
+        $("input[name='teamgender'][value='" + obj.TeamGender + "']").prop("checked", true)
+
     })//ends JSON function to find team name and insert into form 
 
-    const allInputTextFields = 
-    document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
+    const allInputTextFields =
+        document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
 
     //this will make all fields have a beige background when user is in text box
     for (let i = 0; i < allInputTextFields.length; i++) {
@@ -40,15 +45,10 @@ $(function () {
             this.style.backgroundColor = "";
         };
 
-    }
+    }//ends the for loop 
 
 
-
-
-
-
-
-
+    //this on click will call the form validation function and perform ajax call if validation is good
 
     $("#editBtn").on("click", function () {
         let isValid = formValidation();
@@ -57,8 +57,6 @@ $(function () {
             return false;
         }
 
-
-        alert("About to send changes...")
         $.ajax({
             url: '/api/teams', // your api url
             // jQuery < 1.9.0 -> use type
@@ -66,10 +64,9 @@ $(function () {
             data: $("#editTeamForm").serialize(),
             method: 'PUT', // method is any HTTP method
             success: function () {
-                alert("change confirmed")
                 window.location.href = "teamDetails.html?teamid=" + $("#teamid").val();
             }
-        });
+        });//ends ajax call
 
         return false;
     });//end of on click function
@@ -77,7 +74,7 @@ $(function () {
 
 });//ends the onload function           
 
-
+//this function performs the form validation
 function formValidation() {
 
     $("#errorMessages").empty();
@@ -110,14 +107,7 @@ function formValidation() {
         errMsg[errMsg.length] = "Maximum # Team Members is required";
     }
 
-    if ($("#minmemberage").val().trim() == "") {
-        errMsg[errMsg.length] = "Minimum Member Age is required";
-    }
-
-    if ($("#maxmemberage").val().trim() == "") {
-        errMsg[errMsg.length] = "Maximum Member Age is required";
-    }
-
+    
     if (errMsg.length == 0) {
         return true;
     }
