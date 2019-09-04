@@ -62,7 +62,7 @@ $(function () {
         $.post("/api/teams", $("#addTeamForm").serialize(), function (data) {
             data = JSON.parse(data);
             window.location.href = "teamDetails.html?teamid=" + data.TeamId;;
-            alert("Add Team successful");
+            
         });
 
         return false;

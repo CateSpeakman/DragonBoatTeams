@@ -24,7 +24,7 @@
 		"MaxAge":100
 	},
     {
-		"Name": "Club 65+",
+		"Name": "Club 65 And Older",
 		"Code": "Club65",
 		"Description": "This league consists of amateur teams with players 65 plus.",
 		"Gender": "Any",
