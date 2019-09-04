@@ -38,7 +38,8 @@ $(function () {
 
 })//ends ready function
 
-//this function will call the JSON file and populated the table based on user selection within dropdown
+//this function will call the JSON file and populated the table with team list based on user selection 
+//within dropdown
 
 function showTeamByLeague() {
     let objs;
@@ -66,6 +67,9 @@ function showTeamByLeague() {
     }//ends if statement for league list
 }//ends show Team By League function
 
+
+//this function will display all teams when the select all teams buttons is clicked on screen
+
 function showAllTeams() {
     let objs;
     $("#teamListDiv").show();
@@ -85,7 +89,6 @@ function showAllTeams() {
                 + "</td><td><a href='editTeam.html?teamid=" + objs[i].TeamId + "'>Edit</a>"
                 + "</td></tr>";
             $("#teamTable tbody").append(teamRow);
-
 
         }//ends for loop for populating table based on DDL selection
     });//ends JSON function
