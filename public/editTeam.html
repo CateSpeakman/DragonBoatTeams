@@ -49,23 +49,22 @@
             <p> Edit the information below. Once changes have been made, click on edit to save team
                 information. </p>
 
-
-
+            <!-- this form will allow the user to edit a team information-->
             <form id="editTeamForm">
 
                 <input type="hidden" id="teamid" name="teamid">
 
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="teamname">Team Name</label>
-                        <input type="text" class="form-control" id="teamname" name="teamname" required>
+                    <div class=" form-group col-md-4">
+                        <label class="form-check-label" for="league">League:</label>
+                        <input type="text" class="form-control" id="league" name="leaguecode" readonly>
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class=" form-group col-md-4">
-                        <label class="form-check-label" for="league">League:</label>
-                        <input type="text" class="form-control" id="league" name="leaguecode" readonly>
+                    <div class="form-group col-md-4">
+                        <label for="teamname">Team Name</label>
+                        <input type="text" class="form-control" id="teamname" name="teamname" required>
                     </div>
                 </div>
 
@@ -100,14 +99,14 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="minmemberage">Minimum Member Age</label>
-                        <input type="text" class="form-control" id="minmemberage" name="minmemberage" required>
+                        <input type="text" class="form-control" id="minmemberage" name="minmemberage" required readonly>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="maxmemberage">Maximum Member Age</label>
-                        <input type="text" class="form-control" id="maxmemberage" name="maxmemberage" required>
+                        <input type="text" class="form-control" id="maxmemberage" name="maxmemberage" required readonly>
                     </div>
                 </div>
 
@@ -127,21 +126,22 @@
                     <label class="form-check-label" for="any">Any</label>
                 </div>
             </form>
+
+            <!-- this section will contain the save button and cancel button-->
             <div class="container">
                 <div class="row">
                     <button type="button" id="editBtn" class="btn btn-info mt-2">Save</button>
-                    <button type="button" id="cancelBtn" class="btn btn-info mt-2 ml-3">Cancel</button>
+                    <a href="#" id="cancelBtn" class="btn btn-info mt-2 ml-3" role="button">Cancel</a>
                 </div>
             </div>
 
-
+<!-- this section will display any error messages generated during form validation-->
             <div class="container">
                 <div id="msgDiv">
                     <ul id="errorMessages"></ul>
                 </div>
             </div>
         </div>
-
     </main>
 
     <!-- Optional JavaScript -->
