@@ -3,31 +3,31 @@
  Harvey Lake Dragon Boats is a website where people can look up dragon boat teams based on different leagues or search all teams. The user will also be able to add a team, edit team information or adda team member. Screenshots are provided below.
  
  Home Page
- ![home](/public/images/homePage.JPG?raw=true "Screen-Shot")
+ ![home](/public/images/homePage.JPG?raw=true " Home Page Screen-Shot")
  
  About Us
- ![ScreenShot](https://github.com/CateSpeakman/DragonBoatTeams/blob/master/public/images/aboutPage.JPG)
+ ![ScreenShot](/public/images/aboutPage.JPG?raw=true " About Us PageScreen-shot")
  
 Search Page
- ![Screen-Shot](/public/images/searchPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/searchPage.JPG?raw=true "Search Page Screen-Shot")
  
 Team List View
- ![Screen-Shot](/public/images/teamlistView.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/teamlistView.JPG?raw=true "Team List View Screen-Shot")
 
 Team Details Page
- ![Screen-Shot](/public/images/teamDetailsPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/teamDetailsPage.JPG?raw=true "Team Details Screen-Shot")
 
 Add Team Page
- ![Screen-Shot](/public/images/addTeamPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/addTeamPage.JPG?raw=true "Add Team Screen-Shot")
 
 Edit Team Page
- ![Screen-Shot](/public/images/editTeamPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/editTeamPage.JPG?raw=true " Edit Team Screen-Shot")
 
 Add Team Member Page
- ![Screen-Shot](/public/images/addMemberPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/addMemberPage.JPG?raw=true "Add Team Member Screen-Shot")
 
 Gallery Page
- ![Screen-Shot](/public/images/galleryPage.jpg?raw=true "Screen-Shot")
+ ![Screen-Shot](/public/images/galleryPage.JPG?raw=true " Gallery Page Screen-Shot")
 
 
 # Audience
