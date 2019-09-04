@@ -425,11 +425,11 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
     // make sure new values for max members, min/max age, or gender
     // don't conflict with members already on team
 
-    console.log("validating no conflict changes...")
+    //console.log("validating no conflict changes...")
 
     if ( Number(req.body.maxteammembers) < match.Members.length )
     {
-        console.log("Team size too small based on current roster.")
+        //console.log("Team size too small based on current roster.")
         res.status(409).send("Team size too small based on current roster");
 		return;
     }
@@ -437,7 +437,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( Number(req.body.minmemberage) > getMinAgeOfMember(match) )
     {
-        console.log("Minimum age is greater than current member on team.")
+        //console.log("Minimum age is greater than current member on team.")
         res.status(409).send("Minimum age is greater than current member on team");
 		return;
     }
@@ -445,7 +445,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( Number(req.body.maxmemberage) < getMaxAgeOfMember(match) )
     {
-        console.log("Maximum age is less than current member on team")
+        //console.log("Maximum age is less than current member on team")
         res.status(409).send("Maximum age is less than current member on team");
 		return;
     }
@@ -453,7 +453,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     if ( isThereAnyGenderChangeConflicts(req.body.teamgender, match) )
     {
-        console.log("Gender change conflicts with current member on team")
+        //console.log("Gender change conflicts with current member on team")
         res.status(409).send("Gender change conflicts with current member on team");
 		return;
     }
@@ -462,7 +462,7 @@ app.put("/api/teams", urlencodedParser, function (req, res) {
 
     fs.writeFileSync(__dirname + "/data/teams.json", JSON.stringify(data));
    
-    console.log("Team updated!");
+    //console.log("Team updated!");
 	logOneTeam(match);
     res.status(200).send();
  })
