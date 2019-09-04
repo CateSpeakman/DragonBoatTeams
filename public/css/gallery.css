@@ -1,0 +1,21 @@
+body{
+    background-color:#33bbff;
+}
+
+#navbar{
+    background-color:#ffe6b3;;
+    height:140px;
+}
+
+#galleryBanner{
+    font-size:40px;
+}
+
+.carousel-item{
+    height:600px;
+}
+
+
+.carouselCaptions{
+    font-size:20px;
+}
