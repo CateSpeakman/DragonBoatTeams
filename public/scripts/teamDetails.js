@@ -9,27 +9,27 @@ $(function () {
 
     let urlParams = new URLSearchParams(location.search);
     let teamId = urlParams.get("teamid");
-   
+
     $("#registerBtn").prop("href", "addTeamMember.html?teamid=" + teamId);
     $("#backBtn").prop("href", "search.html");
 
     let obj;
-    
-        $.getJSON("/api/teams/" + teamId, function (team) {
-            obj = team;
-            $("#teamInfoCard").html(obj.TeamName);
-            $("#cardText1").html("League: " + obj.League);
-            $("#cardText2").html("Manager Name: " + obj.ManagerName);
-            $("#cardText3").html("Manager Phone: " + obj.ManagerPhone);
-            $("#cardText4").html("Manager Email: " + obj.ManagerEmail);
-            $("#rulesCard").html("Team Rules");
-            $("#cardText5").html("Maximum # Team Members: " + obj.MaxTeamMembers);
-            $("#cardText6").html("Minimum Member Age: " + obj.MinMemberAge);
-            $("#cardText7").html("Maximum Member Age: " + obj.MaxMemberAge);
-            $("#cardText8").html("Team Gender: " + obj.TeamGender);
-             
+    //this will populate the card for team info and for the team rules
+    $.getJSON("/api/teams/" + teamId, function (team) {
+        obj = team;
+        $("#teamInfoCard").html(obj.TeamName);
+        $("#cardText1").html("League: " + obj.League);
+        $("#cardText2").html("Manager Name: " + obj.ManagerName);
+        $("#cardText3").html("Manager Phone: " + obj.ManagerPhone);
+        $("#cardText4").html("Manager Email: " + obj.ManagerEmail);
+        $("#rulesCard").html("Team Rules");
+        $("#cardText5").html("Maximum # Team Members: " + obj.MaxTeamMembers);
+        $("#cardText6").html("Minimum Member Age: " + obj.MinMemberAge);
+        $("#cardText7").html("Maximum Member Age: " + obj.MaxMemberAge);
+        $("#cardText8").html("Team Gender: " + obj.TeamGender);
 
-           //this if statement will look to see if any team members are registered and if so display the list
+
+        //this if statement will look to see if any team members are registered and if so display the list
         if (obj.Members.length == 0) {
             $("#memberListDiv").hide();
         }
