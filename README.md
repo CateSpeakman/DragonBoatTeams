@@ -3,10 +3,10 @@
  Harvey Lake Dragon Boats is a website where people can look up dragon boat teams based on different leagues or search all teams. The user will also be able to add a team, edit team information or adda team member. Screenshots are provided below.
  
  Home Page
- ![Screen-Shot](/public/images/homePage.jpg?raw=true "Screen-Shot")
+ ![home](/public/images/homePage.JPG?raw=true "Screen-Shot")
  
  About Us
- ![Screen-Shot](/public/images/aboutPage.jpg?raw=true "Screen-Shot")
+ ![ScreenShot](https://github.com/CateSpeakman/DragonBoatTeams/blob/master/public/images/aboutPage.JPG)
  
 Search Page
  ![Screen-Shot](/public/images/searchPage.jpg?raw=true "Screen-Shot")
