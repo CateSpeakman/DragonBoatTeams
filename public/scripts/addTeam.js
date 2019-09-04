@@ -4,7 +4,11 @@
 
 $(function () {
 
-    //this function will call the JSON file and populate the table based on the call to 
+
+    $("#cancelBtn").prop("href", "search.html");
+
+
+    //this function will call the JSON file and populate the dropdown for the leagues based on the call to 
     //restful API
 
     let objs;
@@ -28,7 +32,6 @@ $(function () {
     })//ends Json function
 
    
-
     const allInputTextFields =
         document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
 
@@ -42,7 +45,7 @@ $(function () {
             this.style.backgroundColor = "";
         };
 
-    }
+    }//ends for loop
 
 
     //this onclick function will trigger form validation and will post the new team to be added provided
@@ -67,9 +70,9 @@ $(function () {
     });//ends on click function for submit button
 
 
-
 })//ends ready function
 
+//this function will perform the form validation
 
 function formValidation() {
 
@@ -103,14 +106,7 @@ function formValidation() {
         errMsg[errMsg.length] = "Maximum # Team Members is required";
     }
 
-    if ($("#minmemberage").val().trim() == "") {
-        errMsg[errMsg.length] = "Minimum Member Age is required";
-    }
-
-    if ($("#maxmemberage").val().trim() == "") {
-        errMsg[errMsg.length] = "Maximum Member Age is required";
-    }
-
+    
     if (errMsg.length == 0) {
         return true;
     }
@@ -122,6 +118,8 @@ function formValidation() {
     }
 }//ends on validation function
 
+
+//this function will populate the minimum age, maximum age and team gender based on the league chosen
 $("#leagueList").on("change", ()=> {
 
     let obj;
