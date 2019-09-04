@@ -213,12 +213,6 @@ app.get("/index.html", function (req, res) {
  })
 
 
-// TODO:  YOU WILL NEED TO ADD MORE CALLS TO app.get() FOR EACH PAGE
-//        YOU END UP BUILDING
-
-
-
-
 // ------------------------------------------------------------------------------
 // THIS CODE ALLOWS REQUESTS FOR THE API THROUGH 
 
