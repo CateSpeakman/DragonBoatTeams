@@ -12,22 +12,28 @@ $(function () {
     let urlParams = new URLSearchParams(location.search);
     let id = urlParams.get("teamid");
 
+
+    $("#cancelBtn").prop("href", "teamDetails.html?teamid=" + id);
+
+
     let obj;
 
-     $.getJSON("/api/teams/" + id, function (team) {
+    $.getJSON("/api/teams/" + id, function (team) {
         obj = team;
 
         $("#teamName").val(obj.TeamName);
 
 
-        $.getJSON("/api/leagues/" + obj.League, function(league){
+        $.getJSON("/api/leagues/" + obj.League, function (league) {
             obj = league;
             $("#league").val(obj.Name);
         })//ends JSON function to find the team name and insert into form
 
     })//ends JSON function to find team name and insert into form 
-            
-    const allInputTextFields = document.querySelectorAll("input[type='text']");
+
+    const allInputTextFields =
+        document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
+
 
     //this will make all fields have a beige background when user is in text box
     for (let i = 0; i < allInputTextFields.length; i++) {
@@ -40,24 +46,38 @@ $(function () {
         };
 
     }
-   //this posts the new team member information to the server
+    //this posts the new team member information to the server
     $("#saveBtn").on("click", function () {
 
 
         let isValid = formValidation();
 
-        if(isValid == false)
-        {
+        if (isValid == false) {
             return;
         }
-       
+
         $.post("/api/teams/" + id + "/members", $("#registerForm").serialize(), function (data) {
             window.location.href = "teamDetails.html?teamid=" + id;
             alert("register successful");
         });
 
         return false;
-    });//end of on click
+    });//end of on click for save button
+
+
+    $("#resetBtn").on("click", function () {
+
+        console.log("we in");
+
+        $("#memberName").html("");
+        $("#contactName").html("");
+        $("#email").html("");
+        $("#age").html("");
+        $("#phone").html("");
+
+    });//ends of on click for reset button
+
+
 });//end of ready function
 
 function formValidation() {
@@ -96,11 +116,11 @@ function formValidation() {
 
     if (errMsg.length == 0) {
         return true;
-    } 
+    }
     else {
         for (let i = 0; i < errMsg.length; i++) {
             $("<li>" + errMsg[i] + "</li>").appendTo($("#errorMessages"));
         }
         return false;
     }
-}
+}//ends form validation 

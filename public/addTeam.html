@@ -25,7 +25,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item >
+                <li class="nav-item" >
                     <a class="nav-link" id="homeNav" href="index.html">Home </a>
                 </li>
                 <li class="nav-item">
@@ -78,14 +78,14 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="managerphone">Manager Phone</label>
-                        <input type="text" class="form-control" id="managerphone" name="managerphone" required>
+                        <input type="tel" class="form-control" id="managerphone" name="managerphone" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="manageremail">Manager Email</label>
-                        <input type="text" class="form-control" id="manageremail" name="manageremail" required>
+                        <input type="email" class="form-control" id="manageremail" name="manageremail" required>
                     </div>
                 </div>
 
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="teamgender" id="male" value="Male" checked>
+                    <input class="form-check-input" type="radio" name="teamgender" id="male" value="Male">
                     <label class="form-check-label" for="male">Male</label>
                 </div>
 
@@ -121,12 +121,14 @@
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="teamgender" id="any" value="Any">
-                    <label class="form-check-label" for="all">Any</label>
+                    <label class="form-check-label" for="any">Any</label>
                 </div>
 
                 <div class="container">
                     <div class="row">
-                        <button type="input" id="submitBtn" class="btn btn-info mt-3">Submit</button>
+                        <button type="button" id="submitBtn" class="btn btn-info mt-3">Submit</button>
+                        <button type="reset" id="resetBtn" class="btn btn-info mt-3 ml-3">Reset</button>
+                        <button type="button" id="cancelBtn" class="btn btn-info mt-3 ml-3">Cancel</button>
                     </div>
                 </div>
             </form>
