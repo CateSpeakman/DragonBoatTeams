@@ -73,8 +73,6 @@ function showTeamByLeague() {
 function showAllTeams() {
     let objs;
     $("#teamListDiv").show();
-    console.log("we in");
-
 
     $.getJSON("/api/teams/", function (teams) {
 
